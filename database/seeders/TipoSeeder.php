@@ -13,12 +13,16 @@ class TipoSeeder extends Seeder
     public function run(): void
     {
         Tipo::create([
-            'tipo' => 'Preregistrado']);
+            'tipo' => 'Preregistrado'
+        ]);
         Tipo::create([
-            'tipo' => 'Asistente']);
+            'tipo' => 'Asistente'
+        ]);
         Tipo::create([
-            'tipo' => 'Ponente']);
+            'tipo' => 'Ponente'
+        ]);
         Tipo::create([
-            'tipo' => 'Organizador']);
+            'tipo' => 'Organizador'
+        ]);
     }
 }
