@@ -37,6 +37,13 @@ return [
             'throw' => false,
             'report' => false,
         ],
+        'certificados' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private/certificados'),
+            'serve' => true,
+            'throw' => false,
+            'report' => false,
+        ],
 
         'public' => [
             'driver' => 'local',

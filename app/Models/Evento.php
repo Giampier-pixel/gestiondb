@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class Evento extends Model
 {
     protected $table = 'eventos';
     protected $fillable = [
-        'name',
+        'nombre',
         'fecha',
         'address',
         'url'
@@ -36,5 +37,9 @@ class Evento extends Model
     {
         return $this->belongsToMany(User::class, 'participantes', 'evento_id', 'user_id')
         ->wherePivot('tipo_id', 4);
+    }
+    public function certificados():HasMany
+    {
+        return $this->hasMany(Certificado::class, 'evento_id');
     }
 }
