@@ -15,14 +15,15 @@
         Certificado base
     </a>
 
-
 </div>
 <h3 class="text-lg uppercase font-bold p-3 bg-gray-200">
     Organizadores
 </h3>
-<div class="text-justify">
+<div class="flex items-center justify-evenly">
     <a class="inline-block p-3 bg-blue-500 text-white rounded-md" href="{{ route('add-organizador', ['evento_id' => $evento->id]) }}">
     Agregar
+<a class="inline-block p-3 bg-amber-500 text-white rounded-md" href="{{ route('exportar-organizadores', ['evento_id' => $evento->id]) }}">
+    Exportar
 </a>
 </div>
 <ul class="flex flex-col items-stretch">
@@ -39,9 +40,12 @@
 <h3 class="text-lg uppercase font-bold p-3 bg-gray-200">
     Ponentes
 </h3>
-<div class="text-justify">
+<div class="flex items-center justify-evenly">
 <a class="inline-block p-3 bg-blue-500 text-white rounded-md" href="{{ route('add-ponente', ['evento_id' => $evento->id]) }}">
     Agregar
+</a>
+<a class="inline-block p-3 bg-amber-500 text-white rounded-md" href="#">
+    Exportar
 </a>
 </div>
 
@@ -63,6 +67,14 @@
 <h3 class="text-lg uppercase font-bold p-3 bg-gray-200">
     Asistentes
 </h3>
+<div class="flex items-center justify-evenly">
+<a class="inline-block p-3 bg-blue-500 text-white rounded-md" href="{{ route('add-asistente', ['evento_id' => $evento->id]) }}">
+    Agregar
+</a>
+<a class="inline-block p-3 bg-amber-500 text-white rounded-md" href="#">
+    Exportar
+</a>
+</div>
 <ul class="flex flex-col items-stretch">
     @foreach ($asistentes as $asistente)
         <li class="p-3">

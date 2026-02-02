@@ -66,6 +66,14 @@
         font-size: 24px;
         margin-top: 30px;
     }
+
+    .qr {
+        width: 150px;
+        height: 150px;
+        display: block;
+        float: right;
+        margin: 0 0 20px 20px;
+    }
     
     /* Estilos para impresión */
     @media print {
@@ -96,6 +104,13 @@
         <p class="p4">
             Huancayo, {{ $dia }} de {{ $mes[$fecha->month] }} del {{ $fecha->year }}
         </p>
+        <p class="p3">
+            Para la validación ingresar a la URL: 
+        </p>
+        <p class="p3">
+            {{ $url_certificado }}
+        </p>
+        <img src="{{ $qr_code }}" class="qr" alt="Código QR de validación">
     </div>
 </body>
 </html>

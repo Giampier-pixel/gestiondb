@@ -7,7 +7,7 @@
 <h3 class="text-lg uppercase font-bold p-3 bg-gray-200">
     Organizadores
 </h3>
-<div class="text-justify">
+<div class="text-justify mt-4 ml-2">
     <a class="inline-block p-3 bg-blue-500 text-white rounded-md" href="{{ route('generar-organizadores', ['evento_id' => $evento->id]) }}">
     Generar certificados
 </a>
@@ -26,7 +26,8 @@
                     @if ($certificado->tipo_id == 4 && $certificado->user_id == $organizador->id)
                         <a href="{{route('documento',['certificado_id'=>$certificado->id])}}"
                         class="text-xl text-green-600 font-semibold p-2" target="_blank">
-                        Ver certificados    
+                        Ver certificados
+                    </a>  
                     @endif
                 @endforeach
             @else
@@ -40,7 +41,7 @@
 <h3 class="text-lg uppercase font-bold p-3 bg-gray-200">
     Ponentes
 </h3>
-<div class="text-justify">
+<div class="text-justify mt-4 ml-2">
 <a class="inline-block p-3 bg-blue-500 text-white rounded-md" href="{{ route('generar-ponentes', ['evento_id' => $evento->id]) }}">
     Generar certificados
 </a>
@@ -63,16 +64,48 @@
                         <a href="{{route('documento',['certificado_id'=>$certificado->id])}}"
                         class="text-xl text-green-600 font-semibold p-2" target="_blank">
                         Ver certificados    
+                    </a>
                     @endif
                 @endforeach
                 @else
                     <span class="bg-red-500 text-white px-2 py-1 rounded">No creado</span>
                 @endif
             </div>
-
-
         </li>
     @endforeach
 </ul>
 </div>
+<h3 class="text-lg uppercase font-bold p-3 bg-gray-200">
+    Asistentes
+</h3>
+<div class="text-justify mt-4 ml-2">
+<a class="inline-block p-3 bg-blue-500 text-white rounded-md" href="{{ route('generar-asistentes', ['evento_id' => $evento->id]) }}">
+    Generar certificados
+</a>
+</div>
+<ul class="flex flex-col items-stretch">
+    @foreach ($asistentes as $asistente)
+        <li class="p-4 flex flex-nowrap">
+            <div class="flex flex-col items-stretch grow">
+            <p class="text-xl uppercase text-gray-900">
+            {{ $asistente->paternal_surname }} {{ $asistente->maternal_surname }} {{ $asistente->name }}
+            </p>
+            </div>
+            <div class="flex items-center justify-center">
+                @if ($asistente->pivot->certificado_creado)
+                @foreach ($certificados as $certificado)
+                    @if ($certificado->tipo_id == 2 && $certificado->user_id == $asistente->id)
+                        <a href="{{route('documento',['certificado_id'=>$certificado->id])}}"
+                        class="text-xl text-green-600 font-semibold p-2" target="_blank">
+                        Ver certificados    
+                    </a>
+                    @endif
+                @endforeach
+                @else
+                    <span class="bg-red-500 text-white px-2 py-1 rounded">No creado</span>
+                @endif
+            </div>
+        </li>
+    @endforeach
+</ul>
 @endsection
